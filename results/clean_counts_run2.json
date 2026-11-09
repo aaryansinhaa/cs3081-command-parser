@@ -1,0 +1,30 @@
+{
+  "counts": {
+    "input": 3000,
+    "a": 0,
+    "b": 1,
+    "c": 0,
+    "d": 144,
+    "duplicates": 45,
+    "kept": 2810
+  },
+  "sha256": "a473bda6210f4550bc538e98d2ae58b5ed82f3c68c1a340dd34f4b81793c83a2",
+  "shards": [
+    "teacher/shard-0.jsonl",
+    "teacher/shard-1.jsonl"
+  ],
+  "coverage": {
+    "missing": [],
+    "extra": [],
+    "repeated_ids": [],
+    "pool": 3000,
+    "shard_records": 3000
+  },
+  "precedence": [
+    "a invalid json",
+    "b incorrect keys",
+    "c invalid intent",
+    "d invalid slot",
+    "e duplicate text, keep smallest id"
+  ]
+}

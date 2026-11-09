@@ -1,0 +1,15 @@
+NAME                             READY   UP-TO-DATE   AVAILABLE   AGE   CONTAINERS   IMAGES              SELECTOR
+deployment.apps/command-parser   2/2     2            2           15s   service      cc3081/service:v1   app=command-parser
+
+NAME                     TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)   AGE   SELECTOR
+service/command-parser   ClusterIP   10.43.181.29   <none>        80/TCP    15s   app=command-parser
+
+NAME                                       CLASS     HOSTS   ADDRESS      PORTS   AGE
+ingress.networking.k8s.io/command-parser   traefik   *       172.20.0.2   80      15s
+
+NAME                                                 REFERENCE                   TARGETS              MINPODS   MAXPODS   REPLICAS   AGE
+horizontalpodautoscaler.autoscaling/command-parser   Deployment/command-parser   cpu: <unknown>/70%   1         2         2          15s
+
+NAME                                  READY   STATUS    RESTARTS   AGE   IP           NODE                  NOMINATED NODE   READINESS GATES
+pod/command-parser-67b75cf869-nb242   1/1     Running   0          15s   10.42.0.12   k3d-cc3081-server-0   <none>           <none>
+pod/command-parser-67b75cf869-r6s7n   1/1     Running   0          15s   10.42.0.13   k3d-cc3081-server-0   <none>           <none>

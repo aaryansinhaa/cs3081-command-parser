@@ -1,0 +1,34 @@
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+
+# Model weights stay out of Git. Checksums are copied to results/.
+models/*
+!models/v1/
+models/v1/*
+!models/v1/model.sha256
+!models/v2/
+models/v2/*
+!models/v2/model.sha256
+*.safetensors
+*.bin
+*.pt
+*.gguf
+
+# Teacher shards and the cleaned training file live in object storage.
+datasets/
+
+.env
+*.secret
+kubeconfig*
+results/seaweed-port-forward.log
+
+report/*.aux
+report/*.log
+report/*.out
+report/*.toc
+.DS_Store
+results/seaweed-port-forward.log

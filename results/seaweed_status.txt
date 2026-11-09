@@ -1,0 +1,5 @@
+NAME                             READY   STATUS    RESTARTS   AGE
+pod/seaweedfs-7b98ccd445-9896k   1/1     Running   0          53s
+
+NAME                TYPE        CLUSTER-IP    EXTERNAL-IP   PORT(S)                      AGE
+service/seaweedfs   ClusterIP   10.43.35.98   <none>        8333/TCP,9333/TCP,8888/TCP   53s

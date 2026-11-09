@@ -1,0 +1,4 @@
+=== cold start ===
+run 1 cold start: 12s
+run 2 cold start: 13s
+run 3 cold start: 12s

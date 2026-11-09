@@ -1,0 +1,94 @@
+name: ci
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      model_source:
+        description: Model used by the evaluation stage
+        type: choice
+        options:
+          - release
+          - base
+        default: release
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Lint
+        run: |
+          pip install ruff==0.8.4
+          ruff check worker service training scripts tests
+      - name: Secret scan
+        run: |
+          curl -fsSL -o /tmp/gitleaks.tar.gz https://github.com/gitleaks/gitleaks/releases/download/v8.24.2/gitleaks_8.24.2_linux_x64.tar.gz
+          tar -xzf /tmp/gitleaks.tar.gz -C /tmp gitleaks
+          /tmp/gitleaks detect --source . --redact --verbose
+
+  test:
+    needs: lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Unit tests
+        run: |
+          pip install -r requirements/dev.txt
+          pytest
+
+  evaluate:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install CPU inference libraries
+        run: |
+          pip install torch==2.4.1 --index-url https://download.pytorch.org/whl/cpu
+          pip install -r training/requirements.txt
+      - name: Resolve model
+        env:
+          GH_TOKEN: ${{ github.token }}
+          MODEL_SOURCE: ${{ github.event.inputs.model_source || 'release' }}
+        run: |
+          mkdir -p models results
+          if [ "$MODEL_SOURCE" = "base" ]; then
+            echo "MODEL_PATH=EleutherAI/pythia-70m" >> "$GITHUB_ENV"
+          else
+            gh release download model-v1 --pattern v1.tar.gz --dir models --clobber
+            mkdir -p models/v1
+            tar -xzf models/v1.tar.gz -C models/v1
+            echo "MODEL_PATH=models/v1" >> "$GITHUB_ENV"
+          fi
+      - name: Predict on validation.jsonl
+        run: |
+          python training/predict.py --model "$MODEL_PATH" --input data/validation.jsonl --out results/ci_predictions.jsonl
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ci-predictions
+          path: results/ci_predictions.jsonl
+
+  quality:
+    needs: evaluate
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: actions/download-artifact@v4
+        with:
+          name: ci-predictions
+          path: results
+      - name: Quality gate
+        run: python tools/score.py results/ci_predictions.jsonl data/validation.jsonl --min-validity 95

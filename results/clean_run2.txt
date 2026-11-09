@@ -1,0 +1,13 @@
+shards: teacher/shard-0.jsonl, teacher/shard-1.jsonl
+Coverage: pool=3000 shard_records=3000 missing=0 extra=0 repeated=0
+Cleaning counts
+  input records           3000
+  (a) invalid JSON        0
+  (b) incorrect keys      1
+  (c) invalid intent      0
+  (d) invalid slot        144
+  duplicates              45
+  kept                    2810
+  a+b+c+d+duplicates+kept 3000 (matches input: True)
+wrote datasets/v1/train.jsonl
+sha256 a473bda6210f4550bc538e98d2ae58b5ed82f3c68c1a340dd34f4b81793c83a2

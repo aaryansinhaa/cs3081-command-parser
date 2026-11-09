@@ -1,0 +1,11 @@
+currency: INR
+vcpu_hour: 3.5
+gib_memory_hour: 0.45
+replicas: 2
+cpu_limit per replica: 1.0
+memory GiB per replica: 1.0
+cost per replica-hour: 3.9500
+hourly cost of all replicas: 7.9000
+measured rps: 1.488720190941937
+requests per hour: 5359.3927
+cost per 1000 requests: 1.474048

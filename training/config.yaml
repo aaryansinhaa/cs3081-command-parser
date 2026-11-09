@@ -1,0 +1,22 @@
+# Training configuration for EleutherAI/pythia-70m. make train reads this file.
+model_name: EleutherAI/pythia-70m
+seed: 42
+seed_v2: 7
+learning_rate: 0.00005
+batch_size: 4
+epochs: 3
+epochs_v2: 4
+max_seq_len: 128
+train_limit: 1500
+num_threads: 4
+train_file: v1/train.jsonl
+datasets_bucket: datasets
+models_bucket: models
+library_versions:
+  python: "3.12"
+  torch: "2.4.1"
+  transformers: "4.44.2"
+  pyyaml: "6.0.2"
+  boto3: "1.35.76"
+  tokenizers: "0.19.1"
+  safetensors: "0.4.5"

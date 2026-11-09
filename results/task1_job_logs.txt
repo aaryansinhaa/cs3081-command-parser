@@ -1,0 +1,9 @@
+Found 2 pods, using pod/teacher-label-0-2wjpd
+Traceback (most recent call last):
+  File "/app/worker.py", line 199, in <module>
+    main()
+  File "/app/worker.py", line 131, in main
+    os.makedirs(os.path.dirname(local_path), exist_ok=True)
+  File "<frozen os>", line 216, in makedirs
+  File "<frozen os>", line 226, in makedirs
+PermissionError: [Errno 13] Permission denied: 'datasets'

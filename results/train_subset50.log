@@ -1,0 +1,10 @@
+.venv/bin/python training/train.py --version v1 --subset 50
+[train] version=v1 seed=42 lr=5e-05 batch=4 epochs=3 max_seq_len=128 limit=50 device=cpu torch=2.4.1+cpu
+/home/aaryan/Projects/cloud_comp/230101098/.venv/lib/python3.12/site-packages/transformers/tokenization_utils_base.py:1601: FutureWarning: `clean_up_tokenization_spaces` was not set. It will be set to `True` by default. This behavior will be depracted in transformers v4.45, and will be then set to `False` by default. For more details check this issue: https://github.com/huggingface/transformers/issues/31884
+  warnings.warn(
+[train] examples=50
+[train] epoch 1/3 loss 0.827233
+[train] epoch 2/3 loss 0.245003
+[train] epoch 3/3 loss 0.121904
+[train] saved /home/aaryan/Projects/cloud_comp/230101098/models/v1 sha256 66b50331752e80d7787437a326bee34c3b88e881c878f51a9f0dfcac40fdb91f
+[train] uploaded to models/v1/

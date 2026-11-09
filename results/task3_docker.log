@@ -1,0 +1,12 @@
+d1c048c37591a1b1fdfd69c2cb9f9a3736112566b72dfdb973b340a0f929ca7b
+50 sequential requests at 1 CPU, 1 GiB
+after 10 requests mem=335.6MiB / 1GiB
+after 20 requests mem=335.9MiB / 1GiB
+after 30 requests mem=336.3MiB / 1GiB
+after 40 requests mem=402.5MiB / 1GiB
+after 50 requests mem=403MiB / 1GiB
+CONTAINER ID   NAME                CPU %     MEM USAGE / LIMIT   MEM %     NET I/O           BLOCK I/O        PIDS
+d1c048c37591   cc3081-task3-test   0.32%     402.8MiB / 1GiB     39.33%    38.8kB / 30.4kB   357MB / 20.5kB   18
+OOMKilled=false
+done
+cc3081-task3-test

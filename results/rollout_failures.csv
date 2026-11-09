@@ -1,0 +1,4 @@
+Method,Name,Error,Occurrences
+POST,/parse,CatchResponseError('HTTP 502'),1
+POST,/parse,CatchResponseError('HTTP 500'),6
+POST,/parse,CatchResponseError('HTTP 0'),3

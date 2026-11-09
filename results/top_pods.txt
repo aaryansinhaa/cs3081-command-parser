@@ -1,0 +1,3 @@
+NAME                              CPU(cores)   MEMORY(bytes)   
+command-parser-67b75cf869-98rpm   512m         441Mi           
+command-parser-67b75cf869-fxxcg   1002m        420Mi           

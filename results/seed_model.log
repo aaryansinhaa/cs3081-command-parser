@@ -1,0 +1,17 @@
+Could not find platform dependent libraries <exec_prefix>
+uploaded models/v1/config.json
+uploaded models/v1/generation_config.json
+uploaded models/v1/model.sha256
+uploaded models/v1/special_tokens_map.json
+uploaded models/v1/tokenizer.json
+uploaded models/v1/tokenizer_config.json
+uploaded models/v1/model.safetensors
+uploaded models/v1.tar.gz
+uploaded models/v2/config.json
+uploaded models/v2/generation_config.json
+uploaded models/v2/model.sha256
+uploaded models/v2/special_tokens_map.json
+uploaded models/v2/tokenizer.json
+uploaded models/v2/tokenizer_config.json
+uploaded models/v2/model.safetensors
+uploaded models/v2.tar.gz

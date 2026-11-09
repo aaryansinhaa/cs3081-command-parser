@@ -1,0 +1,158 @@
+namespace/data unchanged
+namespace/pipeline unchanged
+namespace/app unchanged
+secret/s3-credentials created
+secret/s3-credentials created
+secret/s3-credentials created
+secret/seaweedfs-s3-config created
+secrets created
+persistentvolumeclaim/seaweedfs-data unchanged
+deployment.apps/seaweedfs unchanged
+service/seaweedfs unchanged
+deployment "seaweedfs" successfully rolled out
+bucket ready: datasets
+bucket ready: models
+uploaded datasets/commands_pool.jsonl
+uploaded models/v1/config.json
+uploaded models/v1/generation_config.json
+uploaded models/v1/model.sha256
+uploaded models/v1/special_tokens_map.json
+uploaded models/v1/tokenizer.json
+uploaded models/v1/tokenizer_config.json
+retry 1/5 models/v1/model.safetensors: Could not connect to the endpoint URL: "http://127.0.0.1:8333/models/v1/model.safetensors"
+retry 2/5 models/v1/model.safetensors: Could not connect to the endpoint URL: "http://127.0.0.1:8333/models/v1/model.safetensors"
+retry 3/5 models/v1/model.safetensors: Could not connect to the endpoint URL: "http://127.0.0.1:8333/models/v1/model.safetensors"
+retry 4/5 models/v1/model.safetensors: Could not connect to the endpoint URL: "http://127.0.0.1:8333/models/v1/model.safetensors"
+Traceback (most recent call last):
+  File "/home/aaryan/Projects/cloud_comp/230101098/.venv/lib/python3.12/site-packages/urllib3/connection.py", line 239, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/aaryan/Projects/cloud_comp/230101098/.venv/lib/python3.12/site-packages/urllib3/util/connection.py", line 85, in create_connection
+    raise err
+  File "/home/aaryan/Projects/cloud_comp/230101098/.venv/lib/python3.12/site-packages/urllib3/util/connection.py", line 73, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/aaryan/Projects/cloud_comp/230101098/.venv/lib/python3.12/site-packages/botocore/httpsession.py", line 464, in send
+    urllib_response = conn.urlopen(
+                      ^^^^^^^^^^^^^
+  File "/home/aaryan/Projects/cloud_comp/230101098/.venv/lib/python3.12/site-packages/urllib3/connectionpool.py", line 847, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "/home/aaryan/Projects/cloud_comp/230101098/.venv/lib/python3.12/site-packages/urllib3/util/retry.py", line 485, in increment
+    raise reraise(type(error), error, _stacktrace)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/aaryan/Projects/cloud_comp/230101098/.venv/lib/python3.12/site-packages/urllib3/util/util.py", line 39, in reraise
+    raise value
+  File "/home/aaryan/Projects/cloud_comp/230101098/.venv/lib/python3.12/site-packages/urllib3/connectionpool.py", line 793, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "/home/aaryan/Projects/cloud_comp/230101098/.venv/lib/python3.12/site-packages/urllib3/connectionpool.py", line 499, in _make_request
+    conn.request(
+  File "/home/aaryan/Projects/cloud_comp/230101098/.venv/lib/python3.12/site-packages/botocore/awsrequest.py", line 96, in request
+    rval = super().request(method, url, body, headers, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/aaryan/Projects/cloud_comp/230101098/.venv/lib/python3.12/site-packages/urllib3/connection.py", line 567, in request
+    self.endheaders()
+  File "/home/aaryan/.local/share/uv/python/cpython-3.12.13-linux-x86_64-gnu/lib/python3.12/http/client.py", line 1353, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "/home/aaryan/Projects/cloud_comp/230101098/.venv/lib/python3.12/site-packages/botocore/awsrequest.py", line 123, in _send_output
+    self.send(msg)
+  File "/home/aaryan/Projects/cloud_comp/230101098/.venv/lib/python3.12/site-packages/botocore/awsrequest.py", line 223, in send
+    return super().send(str)
+           ^^^^^^^^^^^^^^^^^
+  File "/home/aaryan/.local/share/uv/python/cpython-3.12.13-linux-x86_64-gnu/lib/python3.12/http/client.py", line 1057, in send
+    self.connect()
+  File "/home/aaryan/Projects/cloud_comp/230101098/.venv/lib/python3.12/site-packages/urllib3/connection.py", line 398, in connect
+    self.sock = self._new_conn()
+                ^^^^^^^^^^^^^^^^
+  File "/home/aaryan/Projects/cloud_comp/230101098/.venv/lib/python3.12/site-packages/urllib3/connection.py", line 254, in _new_conn
+    raise NewConnectionError(
+urllib3.exceptions.NewConnectionError: AWSHTTPConnection(host='127.0.0.1', port=8333): Failed to establish a new connection: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/aaryan/Projects/cloud_comp/230101098/scripts/seed_model.py", line 44, in <module>
+    main()
+  File "/home/aaryan/Projects/cloud_comp/230101098/scripts/seed_model.py", line 39, in main
+    upload_tree("v1")
+  File "/home/aaryan/Projects/cloud_comp/230101098/scripts/seed_model.py", line 25, in upload_tree
+    storage.upload_file("models", key, path)
+  File "/home/aaryan/Projects/cloud_comp/230101098/scripts/../worker/storage.py", line 105, in upload_file
+    client.put_object(Bucket=bucket, Key=path, Body=handle)
+  File "/home/aaryan/Projects/cloud_comp/230101098/.venv/lib/python3.12/site-packages/botocore/client.py", line 569, in _api_call
+    return self._make_api_call(operation_name, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/aaryan/Projects/cloud_comp/230101098/.venv/lib/python3.12/site-packages/botocore/client.py", line 1005, in _make_api_call
+    http, parsed_response = self._make_request(
+                            ^^^^^^^^^^^^^^^^^^^
+  File "/home/aaryan/Projects/cloud_comp/230101098/.venv/lib/python3.12/site-packages/botocore/client.py", line 1029, in _make_request
+    return self._endpoint.make_request(operation_model, request_dict)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/aaryan/Projects/cloud_comp/230101098/.venv/lib/python3.12/site-packages/botocore/endpoint.py", line 119, in make_request
+    return self._send_request(request_dict, operation_model)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/aaryan/Projects/cloud_comp/230101098/.venv/lib/python3.12/site-packages/botocore/endpoint.py", line 229, in _send_request
+    raise exception
+  File "/home/aaryan/Projects/cloud_comp/230101098/.venv/lib/python3.12/site-packages/botocore/endpoint.py", line 279, in _do_get_response
+    http_response = self._send(request)
+                    ^^^^^^^^^^^^^^^^^^^
+  File "/home/aaryan/Projects/cloud_comp/230101098/.venv/lib/python3.12/site-packages/botocore/endpoint.py", line 383, in _send
+    return self.http_session.send(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/aaryan/Projects/cloud_comp/230101098/.venv/lib/python3.12/site-packages/botocore/httpsession.py", line 493, in send
+    raise EndpointConnectionError(endpoint_url=request.url, error=e)
+botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: "http://127.0.0.1:8333/models/v1/model.safetensors"
+seed attempt 1 failed
+Seaweed S3 not reachable on 127.0.0.1:8333
+seed attempt 2 failed
+Seaweed S3 not reachable on 127.0.0.1:8333
+seed attempt 3 failed
+Seaweed S3 not reachable on 127.0.0.1:8333
+seed attempt 4 failed
+bucket ready: datasets
+bucket ready: models
+uploaded datasets/commands_pool.jsonl
+uploaded models/v1/config.json
+uploaded models/v1/generation_config.json
+uploaded models/v1/model.sha256
+uploaded models/v1/special_tokens_map.json
+uploaded models/v1/tokenizer.json
+uploaded models/v1/tokenizer_config.json
+retry 1/5 models/v1/model.safetensors: Connection was closed before we received a valid response from endpoint URL: "http://127.0.0.1:8333/models/v1/model.safetensors".
+uploaded models/v1/model.safetensors
+uploaded models/v1.tar.gz
+uploaded models/v2/config.json
+uploaded models/v2/generation_config.json
+uploaded models/v2/model.sha256
+uploaded models/v2/special_tokens_map.json
+uploaded models/v2/tokenizer.json
+uploaded models/v2/tokenizer_config.json
+uploaded models/v2/model.safetensors
+uploaded models/v2.tar.gz
+deployment.apps/command-parser created
+service/command-parser created
+ingress.networking.k8s.io/command-parser created
+horizontalpodautoscaler.autoscaling/command-parser created
+Waiting for deployment "command-parser" rollout to finish: 0 of 2 updated replicas are available...
+Waiting for deployment "command-parser" rollout to finish: 1 of 2 updated replicas are available...
+deployment "command-parser" successfully rolled out
+NAME                             READY   UP-TO-DATE   AVAILABLE   AGE   CONTAINERS   IMAGES              SELECTOR
+deployment.apps/command-parser   2/2     2            2           15s   service      cc3081/service:v1   app=command-parser
+
+NAME                     TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)   AGE   SELECTOR
+service/command-parser   ClusterIP   10.43.181.29   <none>        80/TCP    15s   app=command-parser
+
+NAME                                       CLASS     HOSTS   ADDRESS      PORTS   AGE
+ingress.networking.k8s.io/command-parser   traefik   *       172.20.0.2   80      15s
+
+NAME                                                 REFERENCE                   TARGETS              MINPODS   MAXPODS   REPLICAS   AGE
+horizontalpodautoscaler.autoscaling/command-parser   Deployment/command-parser   cpu: <unknown>/70%   1         2         2          15s
+
+NAME                                  READY   STATUS    RESTARTS   AGE   IP           NODE                  NOMINATED NODE   READINESS GATES
+pod/command-parser-67b75cf869-nb242   1/1     Running   0          15s   10.42.0.12   k3d-cc3081-server-0   <none>           <none>
+pod/command-parser-67b75cf869-r6s7n   1/1     Running   0          15s   10.42.0.13   k3d-cc3081-server-0   <none>           <none>

@@ -1,0 +1,30 @@
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+downloading s3://models/v1/config.json
+downloading s3://models/v1/generation_config.json
+downloading s3://models/v1/model.safetensors
+INFO:     10.42.0.1:59334 - "GET /readyz HTTP/1.1" 503 Service Unavailable
+downloading s3://models/v1/model.sha256
+downloading s3://models/v1/special_tokens_map.json
+downloading s3://models/v1/tokenizer.json
+downloading s3://models/v1/tokenizer_config.json
+checksum file present: 300e8d9b90b9a98dfaca38429e83a688ea4e3a6d82ea80d8693c3ec4e6e499e3  v1.tar.gz
+INFO:     10.42.0.1:50622 - "GET /readyz HTTP/1.1" 503 Service Unavailable
+model ready version=v1
+INFO:     10.42.0.1:50638 - "GET /readyz HTTP/1.1" 200 OK
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+downloading s3://models/v1/config.json
+downloading s3://models/v1/generation_config.json
+downloading s3://models/v1/model.safetensors
+INFO:     10.42.0.1:54650 - "GET /readyz HTTP/1.1" 503 Service Unavailable
+downloading s3://models/v1/model.sha256
+downloading s3://models/v1/special_tokens_map.json
+downloading s3://models/v1/tokenizer.json
+downloading s3://models/v1/tokenizer_config.json
+checksum file present: 300e8d9b90b9a98dfaca38429e83a688ea4e3a6d82ea80d8693c3ec4e6e499e3  v1.tar.gz
+INFO:     10.42.0.1:39018 - "GET /readyz HTTP/1.1" 503 Service Unavailable
+model ready version=v1
+INFO:     10.42.0.1:39032 - "GET /readyz HTTP/1.1" 200 OK

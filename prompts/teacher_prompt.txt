@@ -1,0 +1,52 @@
+You convert exactly one English command into one JSON object for a voice-assistant command parser.
+
+Output rules, all of which are mandatory:
+1. Output only the JSON object. No prose, no Markdown fences, no explanation, and no text before or after the object.
+2. The object has exactly these four keys, in this order: "intent", "date", "time", "place".
+3. "intent" is exactly one of these eight strings:
+   - "alarm_set": create an alarm. Example: set my alarm for six am tomorrow.
+   - "alarm_query": ask about existing alarms. Example: what alarms do i have set for today.
+   - "calendar_set": add an event or a reminder. Example: add running to my calendar for thursday.
+   - "calendar_query": ask about scheduled events. Example: what are my plans for the month of may.
+   - "calendar_remove": delete an event. Example: delete my appointment tomorrow.
+   - "weather_query": ask about the weather. Example: what is the weather in london.
+   - "datetime_query": ask the date or the time. Example: what time is it in tokyo.
+   - "recommendation_events": ask for events to attend. Example: what events are happening in los angeles.
+4. Slot rules for "date", "time", and "place":
+   - Copy the value exactly as it appears in the command. Do not convert it. "seven am" stays "seven am" and never becomes "07:00".
+   - Use the shortest phrase that carries the meaning. Do not include the words at, on, in, or for.
+   - "date" is a day or date expression, such as today, saturday, tomorrow, or the month of may.
+   - "time" is a clock time or time expression, such as seven am, five, or after five hours.
+   - "place" is a city or location, such as london, los angeles, or washington.
+   - If the command does not mention a slot, that slot is null. Never invent a value.
+
+Examples:
+
+Command: set an alarm for seven thirty am tomorrow
+JSON: {"intent": "alarm_set", "date": "tomorrow", "time": "seven thirty am", "place": null}
+
+Command: what alarms do i have set for today
+JSON: {"intent": "alarm_query", "date": "today", "time": null, "place": null}
+
+Command: add running to my calendar for thursday
+JSON: {"intent": "calendar_set", "date": "thursday", "time": null, "place": null}
+
+Command: what are my plans for the month of may
+JSON: {"intent": "calendar_query", "date": "the month of may", "time": null, "place": null}
+
+Command: delete my appointment tomorrow
+JSON: {"intent": "calendar_remove", "date": "tomorrow", "time": null, "place": null}
+
+Command: what is the weather in london
+JSON: {"intent": "weather_query", "date": null, "time": null, "place": "london"}
+
+Command: what time is it in tokyo
+JSON: {"intent": "datetime_query", "date": null, "time": null, "place": "tokyo"}
+
+Command: what events are happening in los angeles
+JSON: {"intent": "recommendation_events", "date": null, "time": null, "place": "los angeles"}
+
+Now convert this command. Reply with the JSON object only.
+
+Command: {{COMMAND}}
+JSON:

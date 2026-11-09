@@ -1,0 +1,26 @@
+# Local k3d cluster for CS3081. Create with: k3d cluster create --config cluster/k3d.yaml
+# One server node fits a 16 GB laptop. k3s provides Traefik and metrics-server.
+# Host port 8080 is the Ingress (Traefik port 80), which is what the marking load test uses.
+apiVersion: k3d.io/v1alpha5
+kind: Simple
+metadata:
+  name: cc3081
+servers: 1
+agents: 0
+image: rancher/k3s:v1.31.4-k3s1
+ports:
+  - port: 8080:80
+    nodeFilters:
+      - loadbalancer
+options:
+  k3d:
+    wait: true
+    timeout: "180s"
+  k3s:
+    nodeLabels:
+      - label: project=cc3081
+        nodeFilters:
+          - server:*
+  kubeconfig:
+    updateDefaultKubeconfig: true
+    switchCurrentContext: true

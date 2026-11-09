@@ -1,0 +1,4 @@
+=== Task 3: fault inject ===
+FAULT_INJECT http_code=200 body={"intent":"alarm_set","date":null,"time":"seven am","place":null}
+=== Task 3: fault inject ===
+FAULT_INJECT http_code=500 body={"error":"invalid_model_output"}

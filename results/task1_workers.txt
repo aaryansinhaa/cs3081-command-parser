@@ -1,0 +1,3 @@
+NAME                    READY   STATUS      RESTARTS   AGE   IP           NODE                  NOMINATED NODE   READINESS GATES
+teacher-label-0-5t562   0/1     Completed   0          5s    10.42.0.38   k3d-cc3081-server-0   <none>           <none>
+teacher-label-1-4d6d4   0/1     Completed   0          5s    10.42.0.39   k3d-cc3081-server-0   <none>           <none>

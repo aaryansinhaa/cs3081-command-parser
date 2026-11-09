@@ -1,0 +1,63 @@
+=== Task 3: image size ===
+1.66GB
+=== Task 3: fault inject ===
+deployment.apps/command-parser scaled
+deployment.apps/command-parser env updated
+Waiting for deployment "command-parser" rollout to finish: 1 old replicas are pending termination...
+Waiting for deployment "command-parser" rollout to finish: 1 old replicas are pending termination...
+deployment "command-parser" successfully rolled out
+FAULT_INJECT http_code=200 body={"intent":"alarm_set","date":null,"time":"seven am","place":null}
+deployment.apps/command-parser env updated
+Waiting for deployment "command-parser" rollout to finish: 1 old replicas are pending termination...
+Waiting for deployment "command-parser" rollout to finish: 1 old replicas are pending termination...
+deployment "command-parser" successfully rolled out
+=== ensure v1, 2 replicas for Task 4 baseline ===
+deployment.apps/command-parser env updated
+deployment.apps/command-parser scaled
+Waiting for deployment "command-parser" rollout to finish: 1 out of 2 new replicas have been updated...
+Waiting for deployment "command-parser" rollout to finish: 1 out of 2 new replicas have been updated...
+Waiting for deployment "command-parser" rollout to finish: 1 out of 2 new replicas have been updated...
+Waiting for deployment "command-parser" rollout to finish: 1 old replicas are pending termination...
+Waiting for deployment "command-parser" rollout to finish: 1 old replicas are pending termination...
+deployment "command-parser" successfully rolled out
+pod/command-parser-67b75cf869-cplpc condition met
+pod/command-parser-67b75cf869-v457c condition met
+pod/command-parser-86bd79b5bf-5dx4n condition met
+=== Task 4: cold start x3 ===
+pod "command-parser-67b75cf869-cplpc" deleted from app namespace
+pod "command-parser-67b75cf869-v457c" deleted from app namespace
+pod "command-parser-86bd79b5bf-5dx4n" deleted from app namespace
+pod/command-parser-67b75cf869-7d5qd condition met
+pod/command-parser-67b75cf869-hc6t8 condition met
+Error from server (NotFound): pods "command-parser-67b75cf869-cplpc" not found
+Error from server (NotFound): pods "command-parser-67b75cf869-v457c" not found
+Error from server (NotFound): pods "command-parser-86bd79b5bf-5dx4n" not found
+=== Task 3: image size ===
+1.66GB
+=== Task 3: fault inject ===
+deployment.apps/command-parser scaled
+deployment.apps/command-parser env updated
+Waiting for deployment "command-parser" rollout to finish: 0 out of 1 new replicas have been updated...
+Waiting for deployment "command-parser" rollout to finish: 1 old replicas are pending termination...
+Waiting for deployment "command-parser" rollout to finish: 1 old replicas are pending termination...
+deployment "command-parser" successfully rolled out
+pod/command-parser-67b75cf869-7d5qd condition met
+pod/command-parser-75fb545955-r26dl condition met
+FAULT_INJECT http_code=500 body={"error":"invalid_model_output"}
+deployment.apps/command-parser env updated
+Waiting for deployment "command-parser" rollout to finish: 1 old replicas are pending termination...
+Waiting for deployment "command-parser" rollout to finish: 1 old replicas are pending termination...
+deployment "command-parser" successfully rolled out
+=== ensure v1, 2 replicas for Task 4 baseline ===
+deployment.apps/command-parser scaled
+Waiting for deployment "command-parser" rollout to finish: 1 of 2 updated replicas are available...
+deployment "command-parser" successfully rolled out
+pod/command-parser-67b75cf869-8qksg condition met
+pod/command-parser-67b75cf869-cvbw7 condition met
+=== Task 4: cold start x3 ===
+pod "command-parser-67b75cf869-8qksg" deleted from app namespace
+pod "command-parser-67b75cf869-cvbw7" deleted from app namespace
+pod/command-parser-67b75cf869-4twb7 condition met
+pod/command-parser-67b75cf869-qtqnd condition met
+Error from server (NotFound): pods "command-parser-67b75cf869-8qksg" not found
+Error from server (NotFound): pods "command-parser-67b75cf869-cvbw7" not found

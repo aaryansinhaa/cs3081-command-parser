@@ -1,0 +1,4 @@
+shiksha-nginx-prod was stopped so host port 8080 could be used.
+Cluster cc3081 was recreated with: k3d cluster create --config cluster/k3d.yaml
+Ingress host port: 8080
+2026-11-09T07:30:56+05:30
